@@ -23,10 +23,10 @@ import sys, os
 # Import the PyQt and QGIS libraries
 try:
     from qgis.core import Qgis, QgsMessageLog
-    from PyQt5.QtCore import *
-    from PyQt5.QtGui import *
-    from PyQt5.QtWidgets import *
-    from PyQt5 import uic
+    from qgis.PyQt.QtCore import *
+    from qgis.PyQt.QtGui import *
+    from qgis.PyQt.QtWidgets import *
+    from qgis.PyQt import uic
     QT_VERSION=5
     os.environ['QT_API'] = 'pyqt5'
     from urllib.request import URLError
@@ -124,7 +124,7 @@ class GeoCoding:
         # show the dialog
         dlg.show()
         dlg.adjustSize()
-        result = dlg.exec_()
+        result = dlg.exec()
         # See if OK was pressed
         if result == 1:
             # save settings
@@ -205,7 +205,7 @@ class GeoCoding:
         # show the dialog
         dlg.adjustSize()
         dlg.show()
-        result = dlg.exec_()
+        result = dlg.exec()
         # See if OK was pressed
         if result == 1 :
             try:
@@ -230,7 +230,7 @@ class GeoCoding:
                 place_dlg.placesComboBox.addItem(all_str)
                 place_dlg.placesComboBox.addItems(places.keys())
                 place_dlg.show()
-                result = place_dlg.exec_()
+                result = place_dlg.exec()
                 if result == 1 :
                     if place_dlg.placesComboBox.currentText() == all_str:
                         for place in places:
